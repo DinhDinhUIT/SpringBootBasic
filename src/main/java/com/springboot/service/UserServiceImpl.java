@@ -12,24 +12,21 @@ import com.springboot.dto.UserDTO;
 import com.springboot.mapper.UserMapper;
 
 @Service
-public class UserServiceImpl implements UserService{
+public class UserServiceImpl implements UserService {
 
 	@Autowired
 	UserMapper userMapper;
-	
+
 	@Override
-	@Transactional
 	public List<UserDTO> getListUsers() {
 		return userMapper.findAll();
-		// throw new NullPointerException("abc");
 	}
 
 	@Override
-	@Transactional
 	public Boolean checkRegisterUser(UserDTO userDTO) {
 		List<UserDTO> listUsers = userMapper.findAll();
-		for(UserDTO user:listUsers) {
-			if(userDTO.getUsername().equals(user.getUsername())) {
+		for (UserDTO user : listUsers) {
+			if (userDTO.getUsername().equals(user.getUsername())) {
 				return false;
 			}
 		}
@@ -42,11 +39,10 @@ public class UserServiceImpl implements UserService{
 	}
 
 	@Override
-	@Transactional
 	public Boolean checkLogin(UserDTO userDTO) {
 		List<UserDTO> listUsers = userMapper.findAll();
-		for(UserDTO user:listUsers) {
-			if(userDTO.getUsername().equals(user.getUsername()) && userDTO.getPassword().equals(user.getPassword())) {
+		for (UserDTO user : listUsers) {
+			if (userDTO.getUsername().equals(user.getUsername()) && userDTO.getPassword().equals(user.getPassword())) {
 				return true;
 			}
 		}
@@ -56,14 +52,30 @@ public class UserServiceImpl implements UserService{
 	@Override
 	@Transactional
 	public Boolean updateUser(UserDTO userDTO) {
-		userMapper.updateUserById(userDTO);
+		
+		try {
+			userMapper.updateUserById(userDTO);
 		return true;
+		} catch (Exception e) {
+			throw new NullPointerException("xay ra loi");
+			
+		} finally{
+			return false;
+		}
 	}
 
 	@Override
 	@Transactional
 	public Boolean deleteUser(Integer id) {
-		userMapper.deleteUserById(id);
-		return true;
+
+		try {
+			userMapper.deleteUserById(id);
+			return true;
+		} catch (Exception e) {
+			throw new NullPointerException("xay ra loi");
+			
+		} finally{
+			return false;
+		}
 	}
 }

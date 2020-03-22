@@ -12,4 +12,5 @@ public interface UserMapper {
 	public void insertUser(UserDTO userDTO);
 	public void updateUserById(UserDTO userDTO);
 	public void deleteUserById(Integer id);
+	public void testTransaction();
 }

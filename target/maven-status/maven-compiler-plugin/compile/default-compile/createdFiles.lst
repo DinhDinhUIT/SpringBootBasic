@@ -1,6 +1,5 @@
 com\springboot\model\Person.class
 com\springboot\service\UserService.class
-com\springboot\mapper\UsersMapper.class
 com\springboot\api\HomeAPI.class
 com\springboot\dto\UserDTO.class
 com\springboot\service\UserServiceImpl.class
