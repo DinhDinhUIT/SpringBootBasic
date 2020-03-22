@@ -1,0 +1,61 @@
+body{
+    font-size: 14px;
+    color: #666;
+    background: url('/images/angel.jpeg');
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center center;
+    opacity: 0.9;
+}
+.login-container{
+    height: 100vh;
+    width: 100%;
+}
+.login-form{
+    max-width: 100%;
+    width: 370px;
+    padding: 15px;
+    margin: auto;
+    background: #eee;
+    border-radius: 15px;
+}
+.form-control:focus{
+    border-color: #5352ed;
+    box-shadow: 0 0 0 0.2rem rgba(65, 115, 224, 0.25);
+}
+.forgot-link label{
+    margin-bottom: 0;
+}
+.login-form a{
+    text-decoration: none;
+    color: #666;
+}
+.login-form a:hover{
+    color: #5352ed;
+}
+.btn-login-custom{
+    background-color: #5352ed;
+    border-color: #5352ed;
+    color: #fff;
+    font-size: 15px;
+    font-weight: 600;
+    min-height: 48px;
+}
+.btn-login-custom:focus,
+.btn-login-custom:hover,
+.btn-login-custom:active,
+.btn-login-custom:active:focus{
+    background-color: #1e3799;
+    border-color: #1e3799;
+    color: #fff;
+}
+.btn-login-custom:focus{
+    box-shadow: 0 0 0 0.2rem rgba(65, 115, 224, 0.25);
+}
+.title-login-register::after{
+    content: " ";
+    display: block;
+    border: 1px #666 solid;
+    width: 80px;
+    margin: auto;
+}

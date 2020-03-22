@@ -1,0 +1,31 @@
+<?xml version = "1.0" encoding = "UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.springboot.mapper.UserMapper">
+
+    <!-- findAll -->
+    <select id="findAll" resultType="com.springboot.dto.UserDTO">
+        SELECT * FROM users
+    </select>
+
+    <!-- insert user -->
+    <insert id="insertUser" parameterType="com.springboot.dto.UserDTO">
+        INSERT INTO users 
+        (username, password, email, date_created) 
+        VALUES (#{username}, #{password}, #{email}, #{date_created});
+    </insert>
+
+    <!-- update user by id -->
+    <update id="updateUserById" parameterType="com.springboot.dto.UserDTO">
+        UPDATE users SET
+        username = #{username},
+        email = #{email},
+        role = #{role}
+        WHERE id = #{id}
+    </update>
+
+    <!-- delete user by id -->
+    <delete id="deleteUserById" parameterType="int">
+        DELETE FROM users where id = #{id}
+    </delete>
+</mapper>

@@ -1,0 +1,11 @@
+Manifest-Version: 1.0
+Implementation-Title: SrpingBootBasic
+Implementation-Version: 1.0
+Built-By: Tran Dinh Dinh
+Implementation-Vendor-Id: com.SpringBoot
+Build-Jdk: 1.8.0_241
+Implementation-URL: http://projects.spring.io/spring-boot/SrpingBootBa
+ sic/
+Created-By: Maven Integration for Eclipse
+Implementation-Vendor: Pivotal Software, Inc.
+
