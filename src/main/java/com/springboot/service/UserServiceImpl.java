@@ -23,22 +23,6 @@ public class UserServiceImpl implements UserService {
 	}
 
 	@Override
-	public Boolean checkRegisterUser(UserDTO userDTO) {
-		List<UserDTO> listUsers = userMapper.findAll();
-		for (UserDTO user : listUsers) {
-			if (userDTO.getUsername().equals(user.getUsername())) {
-				return false;
-			}
-		}
-
-		SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy-MM-dd");
-		String date = simpleDateFormat.format(new Date());
-		userDTO.setDate_created(date);
-		userMapper.insertUser(userDTO);
-		return true;
-	}
-
-	@Override
 	public Boolean checkLogin(UserDTO userDTO) {
 		List<UserDTO> listUsers = userMapper.findAll();
 		for (UserDTO user : listUsers) {
@@ -50,32 +34,44 @@ public class UserServiceImpl implements UserService {
 	}
 
 	@Override
+	public Boolean checkRegisterUser(UserDTO userDTO) {
+		try {
+			List<UserDTO> listUsers = userMapper.findAll();
+			for (UserDTO user : listUsers) {
+				if (userDTO.getUsername().equals(user.getUsername())) {
+					return false;
+				}
+			}
+
+			SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy-MM-dd");
+			String date = simpleDateFormat.format(new Date());
+			userDTO.setDate_created(date);
+			userMapper.insertUser(userDTO);
+			return true;
+		} catch (Exception e) {
+			throw new NullPointerException("An error occurred!");
+		}
+	}
+
+	@Override
 	@Transactional
 	public Boolean updateUser(UserDTO userDTO) {
-		
 		try {
 			userMapper.updateUserById(userDTO);
-		return true;
+			return true;
 		} catch (Exception e) {
-			throw new NullPointerException("xay ra loi");
-			
-		} finally{
-			return false;
+			throw new NullPointerException("An error occurred!");
 		}
 	}
 
 	@Override
 	@Transactional
 	public Boolean deleteUser(Integer id) {
-
 		try {
 			userMapper.deleteUserById(id);
 			return true;
 		} catch (Exception e) {
-			throw new NullPointerException("xay ra loi");
-			
-		} finally{
-			return false;
-		}
+			throw new NullPointerException("An error occurred!");
+		} 
 	}
 }

@@ -17,10 +17,16 @@
 
     <!-- update user by id -->
     <update id="updateUserById" parameterType="com.springboot.dto.UserDTO">
-        UPDATE users SET
-        username = #{username},
-        email = #{email},
-        role = #{role}
+        UPDATE users
+        <set>
+            <if test="username != ''">username=#{username},</if>
+            <if test="email != ''">email=#{email},</if>
+            <if test="role != ''">role=#{role}</if>
+
+            <if test="username == ''">username=username,</if>
+            <if test="email == ''">email=email,</if>
+            <if test="role == ''">role=role</if>
+        </set>
         WHERE id = #{id}
     </update>
 

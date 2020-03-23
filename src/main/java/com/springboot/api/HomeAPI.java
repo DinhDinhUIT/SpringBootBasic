@@ -25,10 +25,10 @@ public class HomeAPI {
 
 	@GetMapping("/all")
 	@ResponseBody
-	public List<UserDTO> getAll() {
+	public ResponseEntity<List<UserDTO>> getAll() {
 		List<UserDTO> listUsers = new ArrayList<UserDTO>();
 		listUsers = userService.getListUsers();
-		return listUsers;
+		return ResponseEntity.ok(listUsers);
 	}
 	
 	@PostMapping("/login")
@@ -49,7 +49,7 @@ public class HomeAPI {
 
 	@PostMapping("/register")
 	public ResponseEntity<Boolean> requestRegisterUser(@RequestBody UserDTO userDTO) {
-		Boolean result=userService.checkRegisterUser(userDTO);
+		Boolean result = userService.checkRegisterUser(userDTO);
 		return ResponseEntity.ok(result);
 	}
 	
@@ -59,7 +59,7 @@ public class HomeAPI {
 	}
 	
 	@GetMapping("/get-list-users")
-	public ResponseEntity<List<UserDTO>> getListUsert(){
+	public ResponseEntity<List<UserDTO>> requestListUser(){
 		List<UserDTO> listUsers = userService.getListUsers();
 		return ResponseEntity.ok(listUsers);
 	}

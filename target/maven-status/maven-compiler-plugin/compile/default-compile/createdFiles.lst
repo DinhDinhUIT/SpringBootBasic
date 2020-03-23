@@ -1,9 +1,7 @@
-com\springboot\model\Person.class
 com\springboot\service\UserService.class
 com\springboot\api\HomeAPI.class
 com\springboot\dto\UserDTO.class
 com\springboot\service\UserServiceImpl.class
-com\springboot\model\PersonForm.class
 com\springboot\api\Application$1.class
 com\springboot\api\Application.class
 com\springboot\model\Users.class
