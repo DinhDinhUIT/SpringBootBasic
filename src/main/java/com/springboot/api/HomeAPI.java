@@ -3,6 +3,8 @@ package com.springboot.api;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.websocket.server.PathParam;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
@@ -81,5 +83,21 @@ public class HomeAPI {
 			return ResponseEntity.ok(true);
 		}
 		return ResponseEntity.ok(false);
+	}
+
+	@GetMapping("/login-webix")
+	public String userLoginWebixPage() {
+		return "login-webix";
+	}
+
+	@GetMapping("/design-webix")
+	public String designWebixPage() {
+		return "design-webix";
+	}
+
+	@GetMapping("/get-list-users-by-username")
+	public ResponseEntity<List<UserDTO>> requestGetListUsersByUsername(@PathParam("username") String username) {
+		List<UserDTO> result = userService.getListUsersByUsername(username);
+		return ResponseEntity.ok(result);
 	}
 }

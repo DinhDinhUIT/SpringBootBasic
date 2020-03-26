@@ -6,6 +6,7 @@ import com.springboot.dto.UserDTO;
 
 public interface UserService {
 	public List<UserDTO> getListUsers();
+	public List<UserDTO> getListUsersByUsername(String username);
 	public Boolean checkRegisterUser(UserDTO userDTO);
 	public Boolean checkLogin(UserDTO userDTO);
 	public Boolean updateUser(UserDTO userDTO);

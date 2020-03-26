@@ -8,6 +8,14 @@
         SELECT * FROM users
     </select>
 
+    <!-- find all user by username-->
+    <select id="findUserByUsername" resultType="com.springboot.dto.UserDTO" parameterType="String">
+        SELECT * FROM users
+        WHERE
+        <if test="username != ''">username=#{username}</if>
+        <if test="username == ''">1=1</if>
+    </select>
+
     <!-- insert user -->
     <insert id="insertUser" parameterType="com.springboot.dto.UserDTO">
         INSERT INTO users 

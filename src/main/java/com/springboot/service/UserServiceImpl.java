@@ -34,6 +34,7 @@ public class UserServiceImpl implements UserService {
 	}
 
 	@Override
+	@Transactional
 	public Boolean checkRegisterUser(UserDTO userDTO) {
 		try {
 			List<UserDTO> listUsers = userMapper.findAll();
@@ -73,5 +74,10 @@ public class UserServiceImpl implements UserService {
 		} catch (Exception e) {
 			throw new NullPointerException("An error occurred!");
 		} 
+	}
+
+	@Override
+	public List<UserDTO> getListUsersByUsername(String username) {
+		return userMapper.findUserByUsername(username);
 	}
 }
